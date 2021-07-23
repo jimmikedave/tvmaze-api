@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+.App {
+  padding: 100px;
+}
+
+.search-bar__input {
+  width: 40vw;
+}
+
+.show-description {
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 3px;
+  margin-top: 100px;
+  padding: 10px;
+  width: 40vw;
+}
+
+.show-description p {
+  margin-top: 10px;
+}
+
+.season-selector {
+  margin-top: 50px;
+}
+
+.timeline {
+  border: 3px solid rgb(0, 136, 248);
+  width: 75vw;
+  margin-top: 150px;
+}
+
+.footer {
+  border-top: 2px solid rgb(112, 112, 112);
+  margin-top: 200px;
+  padding-top: 30px;
+  width: 70vw;
+}
