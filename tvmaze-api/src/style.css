@@ -27,6 +27,11 @@ body {
   border-radius: 5px;
 }
 
+.search-bar__title {
+  font-size: 13px;
+  color: rgb(112, 112, 112);
+}
+
 .search-bar__input {
   display: flex;
 }
@@ -114,15 +119,35 @@ body {
   margin-top: 100px;
   padding: 10px;
   width: 40vw;
+  font-size: 16px;
+  color:rgb(112, 112, 112);
+}
+
+.show-description__title {
+  font-size: 18px;
+  color: #000;
 }
 
 .show-description p {
   margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
+
+/***** SELECTOR *****/
 
 .season-selector {
   margin-top: 50px;
+  color:rgb(112, 112, 112);
 }
+
+.season-selector__select {
+  border: 1px solid rgb(112, 112, 112, 0.274);
+  border-radius: 5px;
+  width: 200px;
+  height: 30px;
+}
+
 
 /***** TIMELINE *****/
 
@@ -132,6 +157,10 @@ body {
   width: 80vw;
   height: 20px;
   margin-top: 300px;
+}
+
+#emptyDiv {
+  height: 55vh;
 }
 
 

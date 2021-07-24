@@ -10,6 +10,7 @@ export default function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [show, setShow] = useState("");
+  const [showTitle, setShowTitle] = useState("");
 
   // update the search value onChange
   const updateValue = (event) => {
@@ -23,6 +24,8 @@ export default function App() {
     setSearchValue("");
   }
 
+  // retrieve the selected show and update the show state to display
+  // the title and show description
   const updateShow = (event) => {
     const showSelect = event.target.accessKey;
     const newShow = filteredData.filter((value) => {
@@ -32,15 +35,18 @@ export default function App() {
       }
     });
 
+    // remove the html tags from the tvmaze string
     const removeTags = (sum) => {
-      if ((sum===null) || (sum===''))
+      if ((sum === null) || (sum === ''))
       return false;
       else
       return sum.replace( /(<([^>]+)>)/ig, '');
     }
     const summary = removeTags(newShow[0].show.summary);
+    const title = newShow[0].show.name;
 
-    setShow(summary)
+    setShowTitle(title);
+    setShow(summary);
   }
 
   useEffect(() => {
@@ -93,6 +99,8 @@ export default function App() {
             }
           </div>
         </div>
+        
+        
         {filteredData.length !== 0 && (
           <div className="search-bar__data">
             {filteredData.map((value) => {
@@ -116,35 +124,35 @@ export default function App() {
           </div>
         )}
       </div>
-      <div className="show-description">
-      
-          {show}
-          {/* <h3 className="show-description__title">Show Title</h3>
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ex ut elit auctor 
-          convallis. Pellentesque id mi tristique, ultricies sapien finibus, vulputate nisi. Nunc
-          at mauris feugiat, dignissim mi efficitur, ultrices ipsum. Donec justo ligula, pulvinar
-          mmodo interdum, mattis eu nisi. Curabitur congue leo diam, ac scelerisque nibh posuere id. 
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent velit justo, tristique et
-          magna sed, dignissim commodo dolor. Aliquam sit amet finibus lorem.
-          </p>
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ex ut elit auctor 
-          convallis. Pellentesque id mi tristique, ultricies sapien finibus, vulputate nisi. Nunc
-          at mauris feugiat, dignissim mi efficitur, ultrices ipsum. Donec justo ligula, pulvinar
-          mmodo interdum, mattis eu nisi.
-          </p> */}
+      <div>
+        <button>Test</button>
       </div>
-      <div className="season-selector">
-          <h4>Seasons</h4>
-          <select className="season-selector__select">
-              <option>Select Season</option>
-              <option>Season 1</option>
-              <option>Season 2</option>
-              <option>Season 3</option>
-          </select>
-      </div>      
-      <div className="timeline"></div>
+      {show !== "" ? 
+        <div>
+          <div className="show-description">
+                <h3 className="show-description__title">
+                  {showTitle}
+                </h3>
+                <p>
+                  {show}
+                </p>
+            </div>
+            <div className="season-selector">
+              <h4>Seasons</h4>
+              <select className="season-selector__select">
+                  <option>Select Season</option>
+                  <option>Season 1</option>
+                  <option>Season 2</option>
+                  <option>Season 3</option>
+              </select>
+          </div>      
+          <div className="timeline"></div>
+        </div>
+        :
+        <div id="emptyDiv"></div> 
+      }
+      
+      
       <div className="footer">
           <h1 id="contact">Contact us</h1>
           <div className="footer__column-container">
