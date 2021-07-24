@@ -124,9 +124,16 @@ export default function App() {
           </div>
         )}
       </div>
-      <div>
-        <button>Test</button>
-      </div>
+      {show !== "" ?
+        <div className="clear-button">
+          <button
+            onClick={() => setShow("")}
+          >Clear</button>
+        </div>
+        :
+        <div></div>
+      }
+      
       {show !== "" ? 
         <div>
           <div className="show-description">
