@@ -9,6 +9,7 @@ import CloseIcon from "@material-ui/icons/Close";
 export default function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [show, setShow] = useState("");
 
   // update the search value onChange
   const updateValue = (event) => {
@@ -20,6 +21,26 @@ export default function App() {
   const clearInput = () => {
     setFilteredData([]);
     setSearchValue("");
+  }
+
+  const updateShow = (event) => {
+    const showSelect = event.target.accessKey;
+    const newShow = filteredData.filter((value) => {
+
+      if (value.show.id.toString() === showSelect) {
+        return value.show
+      }
+    });
+
+    const removeTags = (sum) => {
+      if ((sum===null) || (sum===''))
+      return false;
+      else
+      return sum.replace( /(<([^>]+)>)/ig, '');
+    }
+    const summary = removeTags(newShow[0].show.summary);
+
+    setShow(summary)
   }
 
   useEffect(() => {
@@ -56,7 +77,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h4>Search TV Show</h4>
+      <h4 className="search-bar__title">Search TV Show</h4>
       <div className="search-bar">
         <div className="search-bar__input">
           <input 
@@ -75,17 +96,18 @@ export default function App() {
         {filteredData.length !== 0 && (
           <div className="search-bar__data">
             {filteredData.map((value) => {
-              console.log(value);
-              console.log(dateFormat("2012-04-03", "mmmm d, yyyy"))
               return (
-                <li className="search-bar__button" key={value.show.id}>
-                  <button>
-                    <div className="search-bar__button--description">
-                      <p>{value.show.name}</p>
-                      <p id="date">
+                <li className="search-bar__button" key={value.show.id} accessKey={value.show.id}>
+                  <button
+                    onClick={updateShow}
+                    accessKey={value.show.id}
+                  >
+                    <div className="search-bar__button--description" accessKey={value.show.id}>
+                      <p accessKey={value.show.id}>{value.show.name}</p>
+                      <p id="date" accessKey={value.show.id}>
                         premiered on {dateFormat(value.show.premiered, "mmmm dd, yyyy")}
                       </p>
-                      <p>Rating: {value.show.rating.average}</p>
+                      <p accessKey={value.show.id}>Rating: {value.show.rating.average}</p>
                     </div>
                   </button>
                 </li>
@@ -95,7 +117,9 @@ export default function App() {
         )}
       </div>
       <div className="show-description">
-          <h3>Show Title</h3>
+      
+          {show}
+          {/* <h3 className="show-description__title">Show Title</h3>
           <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ex ut elit auctor 
           convallis. Pellentesque id mi tristique, ultricies sapien finibus, vulputate nisi. Nunc
@@ -104,13 +128,20 @@ export default function App() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent velit justo, tristique et
           magna sed, dignissim commodo dolor. Aliquam sit amet finibus lorem.
           </p>
+          <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ex ut elit auctor 
+          convallis. Pellentesque id mi tristique, ultricies sapien finibus, vulputate nisi. Nunc
+          at mauris feugiat, dignissim mi efficitur, ultrices ipsum. Donec justo ligula, pulvinar
+          mmodo interdum, mattis eu nisi.
+          </p> */}
       </div>
       <div className="season-selector">
           <h4>Seasons</h4>
-          <select>
-              <option>Example 1</option>
-              <option>Example 2</option>
-              <option>Example 3</option>
+          <select className="season-selector__select">
+              <option>Select Season</option>
+              <option>Season 1</option>
+              <option>Season 2</option>
+              <option>Season 3</option>
           </select>
       </div>      
       <div className="timeline"></div>
