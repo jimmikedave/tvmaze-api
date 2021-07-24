@@ -99,8 +99,6 @@ export default function App() {
             }
           </div>
         </div>
-        
-        
         {filteredData.length !== 0 && (
           <div className="search-bar__data">
             {filteredData.map((value) => {
@@ -133,7 +131,6 @@ export default function App() {
         :
         <div></div>
       }
-      
       {show !== "" ? 
         <div>
           <div className="show-description">
@@ -158,8 +155,6 @@ export default function App() {
         :
         <div id="emptyDiv"></div> 
       }
-      
-      
       <div className="footer">
           <h1 id="contact">Contact us</h1>
           <div className="footer__column-container">
