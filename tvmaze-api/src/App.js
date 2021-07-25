@@ -47,6 +47,7 @@ export default function App() {
 
     setShowTitle(title);
     setShow(summary);
+    setFilteredData([]);
   }
 
   useEffect(() => {
