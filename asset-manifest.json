@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/tvmaze-api/static/css/main.0e6b0bef.chunk.css",
-    "main.js": "/tvmaze-api/static/js/main.031ea1dc.chunk.js",
-    "main.js.map": "/tvmaze-api/static/js/main.031ea1dc.chunk.js.map",
+    "main.js": "/tvmaze-api/static/js/main.bb113e88.chunk.js",
+    "main.js.map": "/tvmaze-api/static/js/main.bb113e88.chunk.js.map",
     "runtime-main.js": "/tvmaze-api/static/js/runtime-main.083274a4.js",
     "runtime-main.js.map": "/tvmaze-api/static/js/runtime-main.083274a4.js.map",
     "static/js/2.57b8f344.chunk.js": "/tvmaze-api/static/js/2.57b8f344.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.083274a4.js",
     "static/js/2.57b8f344.chunk.js",
     "static/css/main.0e6b0bef.chunk.css",
-    "static/js/main.031ea1dc.chunk.js"
+    "static/js/main.bb113e88.chunk.js"
   ]
 }
